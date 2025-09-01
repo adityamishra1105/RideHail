@@ -31,7 +31,6 @@ Containerization: Docker
 Testing: JUnit, Mockito
 API Documentation: Springdoc OpenAPI (Swagger UI)
 
-System Architecture
 
 ## System Architecture
 
