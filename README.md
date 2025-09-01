@@ -6,11 +6,11 @@ Distributed Microservices Architecture: System decomposed into 6+ independent se
 
 Real-Time Driver Discovery: Implements a scalable solution for finding nearby drivers using Redis Geospatial queries, reducing query latency by 70% compared to traditional SQL-based radius searches.
 
-JWT-Based Authentication & Authorization: Secure API access with role-based permissions (RIDER, DRIVER) using Spring Security.
+JWT-Based Authentication & Authorisation: Secure API access with role-based permissions (RIDER, DRIVER) using Spring Security.
 
 Ride State Management: Handles the complete ride lifecycle from REQUESTED to COMPLETED with transaction safety.
 
-Asynchronous Event-Driven Notifications: utilizes RabbitMQ to decouple services. The Notification service listens for events like RIDE_COMPLETED and sends alerts, improving overall system resilience and response times.
+Asynchronous Event-Driven Notifications: utilises RabbitMQ to decouple services. The Notification service listens for events like RIDE_COMPLETED and sends alerts, improving overall system resilience and response times.
 
 API Gateway: Serves as a single entry point for all client requests, handling routing, load balancing, and cross-cutting concerns.
 
@@ -32,31 +32,36 @@ Testing: JUnit, Mockito
 API Documentation: Springdoc OpenAPI (Swagger UI)
 
 System Architecture
-bash
-+-------------------+       +-----------------+       +-------------------+
-|   Mobile/Web      |       |   API Gateway   |       |   Service Discovery|
-|   Client          +------->  (Spring Cloud  +------->  (Eureka Server)  |
-|                   |       |     Gateway)    |       |                   |
-+-------------------+       +--------+--------+       +-------------------+
-                                     |
-         +---------------------------+--------------------------+
-         |                           |                          |
-+--------v--------+         +--------v--------+        +--------v--------+
-|   User Service  |         |   Ride Service  |       | Location Service |
-| (Spring Boot)   |         | (Spring Boot)   |       |  (Spring Boot)   |
-| - Auth          |         | - Core Logic    |       | - Redis Geospatial|
-| - User Management|         | - State Machine |       | - Driver Locations|
-| - MySQL         |         | - MySQL         |        +-------------------+
-+-----------------+         +-----------------+
-         ^                           |                          |
-         |        +------------------+--------------------------+
-         |        |                  |                          |
-         |  +-----v------+   +-------v---------+       +--------v--------+
-         |  | Notification|   |   Payment Service|      |   (Future)     |
-         |  | Service     |   |  (Optional)      |      |   Other Services|
-         +--+ (Spring Boot|   |  (Spring Boot)   |      +-----------------+
-            | - RabbitMQ  |   |  - Stripe API    |
-            +-------------+   +------------------+
+
+## System Architecture
+
+This project follows a distributed microservices architecture. The diagram below illustrates the interaction between the services:
+
+```mermaid
+graph TD
+    Client[Mobile/Web Client] --> Gateway[API Gateway]
+    
+    subgraph "Cloud Infrastructure"
+        Gateway --> Discovery[Service Discovery - Eureka]
+        Discovery --> UserS[User Service]
+        Discovery --> RideS[Ride Service]
+        Discovery --> LocationS[Location Service]
+        Discovery --> NotificationS[Notification Service]
+    end
+
+    UserS --> MySQL[(MySQL Database)]
+    RideS --> MySQL
+    
+    LocationS --> Redis[(Redis)]
+    
+    RideS --> MQ[RabbitMQ]
+    MQ --> NotificationS
+```
+
+### Service Interaction Flow:
+... (the rest of your description)
+
+
 Service Breakdown
 api-gateway: Routes incoming requests to the appropriate microservice.
 
