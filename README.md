@@ -59,8 +59,18 @@ graph TD
 
 ### Service Interaction Flow:
 
+Client Request: All client requests first arrive at the API Gateway.
 
-Service Breakdown
+Routing & Discovery: The Gateway consults the Service Discovery (Eureka Server) to find the network location of the required microservice.
+
+Service Execution: The respective service (e.g., User, Ride) handles the request, interacting with databases or other services as needed.
+
+Asynchronous Communication: The Ride Service publishes events to RabbitMQ, which are then consumed asynchronously by the Notification Service.
+
+Response: The response is routed back through the Gateway to the client.
+
+
+### Service Breakdown
 1) api-gateway: Routes incoming requests to the appropriate microservice.
 
 2) service-discovery: Registry where all microservices register themselves and discover others.
@@ -73,7 +83,7 @@ Service Breakdown
 
 6) notification-service: Listens for events on a RabbitMQ queue and handles sending notifications.
 
-bash
+```bash
 Installation & Local Development
 Prerequisites
 Java 17 (Stable)
