@@ -151,7 +151,7 @@ POST /api/auth/login
 
 ```bash
 {
-  "email": "jane.doe@example.com",
+  "email": "adityaamishra11@gmail.com",
   "password": "password123"
 }
 ```
@@ -203,9 +203,6 @@ mvn test
 -> Implement circuit breakers for resilience with Resilience4j.
 
 
-### License
-This project is licensed under the MIT License.
-
 
 ## Installation
 
@@ -227,5 +224,6 @@ function App() {
 ```
 
 ## License
+This project is licensed under the MIT License.
 
 [MIT](https://choosealicense.com/licenses/mit/)
