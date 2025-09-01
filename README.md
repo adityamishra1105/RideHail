@@ -59,7 +59,6 @@ graph TD
 ```
 
 ### Service Interaction Flow:
-... (the rest of your description)
 
 
 Service Breakdown
