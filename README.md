@@ -19,7 +19,7 @@ Service Discovery: Netflix Eureka client-server model allows services to dynamic
 RESTful APIs: Clean, well-documented APIs following REST conventions for all operations.
 
 Technology Stack
-Backend Framework: Java 17, Spring Boot 3.2.5
+Backend Framework: Java, Spring Boot 
 Architecture: Microservices, REST APIs
 Service Discovery: Netflix Eureka
 API Gateway: Spring Cloud Gateway
@@ -63,21 +63,22 @@ graph TD
 
 
 Service Breakdown
-api-gateway: Routes incoming requests to the appropriate microservice.
+1) api-gateway: Routes incoming requests to the appropriate microservice.
 
-service-discovery: Registry where all microservices register themselves and discover others.
+2) service-discovery: Registry where all microservices register themselves and discover others.
 
-user-service: Handles user registration, authentication (JWT), and profile management.
+3) user-service: Handles user registration, authentication (JWT), and profile management.
 
-ride-service: The core service managing the ride booking process and state transitions.
+4) ride-service: The core service manages the ride booking process and state transitions.
 
-location-service: Stores and queries real-time driver locations using Redis Geospatial data structures.
+5) location-service: Stores and queries real-time driver locations using Redis Geospatial data structures.
 
-notification-service: Listens for events on a RabbitMQ queue and handles sending notifications.
+6) notification-service: Listens for events on a RabbitMQ queue and handles sending notifications.
 
+bash
 Installation & Local Development
 Prerequisites
-Java 17
+Java 17 (Stable)
 
 Maven 3.6+
 
