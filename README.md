@@ -98,19 +98,19 @@ Redis (or run via Docker)
 
 Quick Start with Docker Compose
 Clone the repository:
-
-bash
+```
+```bash
 git clone https://github.com/your-username/ridehail-backend.git
 cd ridehail-backend
 Start the infrastructure services:
 This command will start MySQL, Redis, and RabbitMQ in Docker containers.
-
-bash
+```
+```bash
 docker-compose -f docker-compose-infra.yml up -d
 Build and run the microservices:
 You must build and run the services in the following order:
-
-bash
+```
+```bash
 # 1. Build all projects
 mvn clean package -DskipTests
 
@@ -177,8 +177,8 @@ json
 }
 Testing
 Run the test suite for all modules from the root directory:
-
-bash
+```
+```bash
 mvn test
 Future Enhancements
 Integrate with a real payment gateway (Stripe / PayPal).
@@ -190,10 +190,11 @@ Add distributed tracing with Spring Cloud Sleuth and Zipkin.
 Deploy on a cloud platform (AWS / Azure) using Kubernetes.
 
 Implement circuit breakers for resilience with Resilience4j.
-
+```
+```bash
 License
 This project is licensed under the MIT License.
-
+```
 
 ## Installation
 
