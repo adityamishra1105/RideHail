@@ -32,7 +32,7 @@ Testing: JUnit, Mockito
 API Documentation: Springdoc OpenAPI (Swagger UI)
 
 System Architecture
-text
+bash
 +-------------------+       +-----------------+       +-------------------+
 |   Mobile/Web      |       |   API Gateway   |       |   Service Discovery|
 |   Client          +------->  (Spring Cloud  +------->  (Eureka Server)  |
