@@ -83,33 +83,31 @@ Response: The response is routed back through the Gateway to the client.
 
 6) notification-service: Listens for events on a RabbitMQ queue and handles sending notifications.
 
+### Installation & Local Development
+### Prerequisites 
 ```bash
-Installation & Local Development
-Prerequisites
+
 Java 17 (Stable)
-
 Maven 3.6+
-
 Docker and Docker Compose
-
 MySQL (or run via Docker)
-
 Redis (or run via Docker)
-
 Quick Start with Docker Compose
-Clone the repository:
 ```
+### Clone the repository:
 ```bash
 git clone https://github.com/your-username/ridehail-backend.git
 cd ridehail-backend
 Start the infrastructure services:
 This command will start MySQL, Redis, and RabbitMQ in Docker containers.
 ```
+### Start the infrastructure services:
+This command will start MySQL, Redis, and RabbitMQ in Docker containers.
 ```bash
 docker-compose -f docker-compose-infra.yml up -d
-Build and run the microservices:
-You must build and run the services in the following order:
 ```
+### Build and run the microservices:
+You must build and run the services in the following order:
 ```bash
 # 1. Build all projects
 mvn clean package -DskipTests
@@ -124,77 +122,90 @@ java -jar location-service/target/location-service-1.0.0.jar
 java -jar ride-service/target/ride-service-1.0.0.jar
 java -jar notification-service/target/notification-service-1.0.0.jar
 java -jar api-gateway/target/api-gateway-1.0.0.jar
-Access the applications:
+```
 
+### Access the applications:
+```bash
 Eureka Dashboard: http://localhost:8761
 
 API Gateway: http://localhost:8080
 
 Swagger API Docs (per service): http://localhost:8080/{service-name}/v3/api-docs (e.g., http://localhost:8080/user-service/v3/api-docs.yaml)
+```
 
-API Usage Examples
+### API Usage Examples
 1. User Registration (Driver/Rider)
 POST /api/auth/register
 
-json
+```bash
 {
-  "name": "Jane Doe",
-  "email": "jane.doe@example.com",
+  "name": "Aditya Mishra",
+  "email": "adityaamishra11@gmail.com",
   "password": "password123",
   "role": "RIDER"
 }
+```
+
 2. Login & Get JWT Token
 POST /api/auth/login
 
-json
+```bash
 {
   "email": "jane.doe@example.com",
   "password": "password123"
 }
+```
+```bash
 Response:
 
 json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
+```
+
 3. Update Driver Location
 PUT /api/drivers/location (Requires DRIVER role JWT in Header)
 
-json
+```bash
 {
   "latitude": 40.7128,
   "longitude": -74.0060
 }
+```
+
 4. Request a Ride
 POST /api/rides/request (Requires RIDER role JWT in Header)
 
-json
+```bash
 {
   "pickupLatitude": 40.7128,
   "pickupLongitude": -74.0060,
   "destinationLatitude": 40.7214,
   "destinationLongitude": -74.0052
 }
-Testing
-Run the test suite for all modules from the root directory:
 ```
+### Testing
+
+Run the test suite for all modules from the root directory:
 ```bash
 mvn test
-Future Enhancements
-Integrate with a real payment gateway (Stripe / PayPal).
-
-Implement WebSockets for pushing real-time ride updates to clients.
-
-Add distributed tracing with Spring Cloud Sleuth and Zipkin.
-
-Deploy on a cloud platform (AWS / Azure) using Kubernetes.
-
-Implement circuit breakers for resilience with Resilience4j.
 ```
-```bash
-License
+### Future Enhancements
+-> Integrate with a real payment gateway (Stripe / PayPal).
+
+-> Implement WebSockets for pushing real-time ride updates to clients.
+
+-> Add distributed tracing with Spring Cloud Sleuth and Zipkin.
+
+-> Deploy on a cloud platform (AWS / Azure) using Kubernetes.
+
+-> Implement circuit breakers for resilience with Resilience4j.
+
+
+### License
 This project is licensed under the MIT License.
-```
+
 
 ## Installation
 
