@@ -42,6 +42,4 @@ public class Driver {
     public void setLongitude(Double longitude){
         this.longitude = longitude;
     }
-
-
 }
