@@ -18,4 +18,16 @@ public class Driver {
     private String licensePlate;
     private boolean available;   // true - free, false - busy
 
+    private Double latitude;
+    private Double longitude;
+
+    // -- Getters Setters --
+    public boolean isAvailable(){
+        return available;
+    }
+    public void setAvailable(boolean available){
+        this.available = available;
+    }
+
+
 }
