@@ -1,5 +1,6 @@
 package com.aditya.ride_service.service;
 
+import org.springframework.data.redis.connection.RedisGeoCommands.GeoLocation;
 import com.aditya.ride_service.model.*;
 import com.aditya.ride_service.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class RideService {
     private final RiderRepository riderRepo;
     private final DriverRepository driverRepo;
     private final RideRepository rideRepo;
+    private final DriverLocationService driverLocationService; // ✅ Injected Redis service
 
     // Request a ride
     public Ride requestRide(Long riderId, String pickup, String dropOff) {
@@ -91,5 +93,24 @@ public class RideService {
 
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c; // Distance in km
+    }
+
+    // Find nearest driver using Redis GEO
+    public Driver findNearestDrivers(double riderLat, double riderLon) {
+        List<GeoLocation<String>> nearbyDrivers =
+                driverLocationService.findNearestDrivers(riderLat, riderLon, 5.0); // ✅ now works
+
+        if (nearbyDrivers.isEmpty()) {
+            throw new RuntimeException("No available drivers nearby");
+        }
+
+        for (var geoLoc : nearbyDrivers) {
+            Long driverId = Long.valueOf(geoLoc.getName());
+            Driver driver = driverRepo.findById(driverId).orElseThrow();
+            if (driver.isAvailable()) {
+                return driver;
+            }
+        }
+        throw new RuntimeException("No available drivers nearby");
     }
 }
