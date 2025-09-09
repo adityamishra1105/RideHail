@@ -8,28 +8,28 @@ Real-Time Driver Discovery: Implements a scalable solution for finding nearby dr
 
 JWT-Based Authentication & Authorisation: Secure API access with role-based permissions (RIDER, DRIVER) using Spring Security.
 
-Ride State Management: Handles the complete ride lifecycle from REQUESTED to COMPLETED with transaction safety.
+Ride State Management -: Handles the complete ride lifecycle from REQUESTED to COMPLETED with transaction safety.
 
-Asynchronous Event-Driven Notifications: utilises RabbitMQ to decouple services. The Notification service listens for events like RIDE_COMPLETED and sends alerts, improving overall system resilience and response times.
+Asynchronous Event-Driven Notifications -: utilises RabbitMQ to decouple services. The Notification service listens for events like RIDE_COMPLETED and sends alerts, improving overall system resilience and response times.
 
-API Gateway: Serves as a single entry point for all client requests, handling routing, load balancing, and cross-cutting concerns.
+API Gateway -: Serves as a single entry point for all client requests, handling routing, load balancing, and cross-cutting concerns.
 
-Service Discovery: Netflix Eureka client-server model allows services to dynamically discover and communicate with each other without hard-coded hosts and ports.
+Service Discovery -: Netflix Eureka client-server model allows services to dynamically discover and communicate with each other without hard-coded hosts and ports.
 
-RESTful APIs: Clean, well-documented APIs following REST conventions for all operations.
+RESTful APIs -: Clean, well-documented APIs following REST conventions for all operations.
 
 Technology Stack
-Backend Framework: Java, Spring Boot 
-Architecture: Microservices, REST APIs
-Service Discovery: Netflix Eureka
-API Gateway: Spring Cloud Gateway
-Communication: Synchronous (Spring Cloud OpenFeign), Asynchronous (RabbitMQ Message Broker)
-Database: MySQL (Primary Data), Redis (Geospatial Data for Locations)
-Security: Spring Security, JWT (JSON Web Tokens)
-Build Tool: Maven
-Containerization: Docker
-Testing: JUnit, Mockito
-API Documentation: Springdoc OpenAPI (Swagger UI)
+Backend Framework -Java, Spring Boot 
+Architecture - Microservices, REST APIs
+Service Discovery - Netflix Eureka
+API Gateway - Spring Cloud Gateway
+Communication - Synchronous (Spring Cloud OpenFeign), Asynchronous (RabbitMQ Message Broker)
+Database - MySQL (Primary Data), Redis (Geospatial Data for Locations)
+Security - Spring Security, JWT (JSON Web Tokens)
+Build Tool - Maven
+Containerization - Docker
+Testing - JUnit, Mockito
+API Documentation - Springdoc OpenAPI (Swagger UI)
 
 
 ## System Architecture
@@ -71,17 +71,17 @@ Response: The response is routed back through the Gateway to the client.
 
 
 ### Service Breakdown
-1) api-gateway: Routes incoming requests to the appropriate microservice.
+1) api-gateway - Routes incoming requests to the appropriate microservice.
 
-2) service-discovery: Registry where all microservices register themselves and discover others.
+2) service-discovery - Registry where all microservices register themselves and discover others.
 
-3) user-service: Handles user registration, authentication (JWT), and profile management.
+3) user-service - Handles user registration, authentication (JWT), and profile management.
 
-4) ride-service: The core service manages the ride booking process and state transitions.
+4) ride-service - The core service manages the ride booking process and state transitions.
 
-5) location-service: Stores and queries real-time driver locations using Redis Geospatial data structures.
+5) location-service - Stores and queries real-time driver locations using Redis Geospatial data structures.
 
-6) notification-service: Listens for events on a RabbitMQ queue and handles sending notifications.
+6) notification-service - Listens for events on a RabbitMQ queue and handles sending notifications.
 
 ### Installation & Local Development
 ### Prerequisites 
