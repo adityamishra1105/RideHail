@@ -11,6 +11,7 @@
 	<groupId>com.aditya</groupId>
 	<artifactId>ride-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>ride-service</name>
 	<description>Distributed Ride-Hailing Service Backend (Uber-like)</description>
 	<url/>
@@ -20,6 +21,10 @@
 	<developers>
 		<developer/>
 	</developers>
+	<modules>
+		<module>eureka-server</module>
+		<module>api-gateway</module>
+	</modules>
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -29,6 +34,19 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>2023.0.3</version> <!-- Match Spring Boot version -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
