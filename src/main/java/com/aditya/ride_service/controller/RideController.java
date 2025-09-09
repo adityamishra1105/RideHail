@@ -39,4 +39,9 @@ public class RideController {
         Driver driver = rideService.findNearestDriver(lat, lon);
         return ResponseEntity.ok(driver);
     }
+    @GetMapping("/test")
+    public String test() {
+        return "Ride Service is working!";
+    }
+
 }
