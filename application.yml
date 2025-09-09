@@ -1,0 +1,13 @@
+server:
+  port: 8088  # Make sure it's different from Eureka (8080)
+
+spring:
+  application:
+    name: ride-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    register-with-eureka: true
+    fetch-registry: true

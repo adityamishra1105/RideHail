@@ -1,0 +1,21 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+          routes:
+            - id: ride-service
+              uri: lb://ride-service
+              predicates:
+                - Path=/api/rides/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
