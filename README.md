@@ -1,4 +1,4 @@
-RideHail - A Distributed Ride-Hailing Service Backend
+<h1 align="center"> RideHail - A Distributed Ride-Hailing Service Backend </h1>
 A high-performance, cloud-native backend system simulating the core functionality of services like Uber. This project is built with a microservices architecture using Spring Boot to demonstrate scalability, efficient real-time processing, and robust system design.
 
 Features
