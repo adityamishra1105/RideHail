@@ -19,7 +19,7 @@ Service Discovery -: Netflix Eureka client-server model allows services to dynam
 RESTful APIs -: Clean, well-documented APIs following REST conventions for all operations.
 
 Technology Stack
-Backend Framework -Java, Spring Boot 
+Backend Framework - Java, Spring Boot 
 Architecture - Microservices, REST APIs
 Service Discovery - Netflix Eureka
 API Gateway - Spring Cloud Gateway
